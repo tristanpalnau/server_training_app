@@ -1,4 +1,4 @@
-# Server Training Backend
+# Server Training App
 
 A modular, JSON-driven backend for a scenario-based restaurant training platform.  
 Built with FastAPI, this backend currently powers **orientation and first-day training flows**, with extensible engines in place for deeper lesson and quiz-based learning.

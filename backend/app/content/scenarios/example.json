@@ -1,0 +1,20 @@
+{
+    "id": "example",
+    "title": "Example Scenario",
+    "steps": [
+        {
+            "id": "start",
+            "text": "A guest walks in. How do you greet them?",
+            "options": [
+                {
+                    "label": "Greet warmly",
+                    "next_step": "good_greeting"
+                },
+                {
+                    "label": "Ignore them",
+                    "next_step": "bad_greeting"
+                }
+            ]
+        }
+    ]
+}

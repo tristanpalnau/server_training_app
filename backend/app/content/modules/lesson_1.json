@@ -1,0 +1,31 @@
+{
+  "id": "lesson_1",
+  "title": "Serving is a Skill, Not a Personality Type",
+
+  "steps": [
+    {
+      "type": "text",
+      "content": "Intro text goes here..."
+    },
+
+    {
+      "type": "reflection",
+      "prompt": "What brings you to the service industry?"
+    },
+
+    {
+      "type": "quiz",
+      "quiz_id": "server_style"
+    },
+
+    {
+      "type": "quiz_result",
+      "quiz_id": "server_style"
+    },
+
+    {
+      "type": "text",
+      "content": "Closing encouragement for the module..."
+    }
+  ]
+}

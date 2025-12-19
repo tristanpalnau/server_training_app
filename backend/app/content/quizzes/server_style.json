@@ -1,0 +1,49 @@
+{
+  "questions": [
+    {
+      "question": "When you're in a new situation, what's the first thing you tend to look for?",
+      "answers": [
+        { "text": "What needs to get done first?", "style": "strategist" },
+        { "text": "How is everyone feeling?", "style": "guide" },
+        { "text": "Let me get a sense of what's going on.", "style": "anchor" },
+        { "text": "What can I jump into right away?", "style": "spark" }
+      ]
+    },
+    {
+      "question": "When someone gives you instructions, how do you usually approach them?",
+      "answers": [
+        { "text": "I follow the steps exactly.", "style": "strategist" },
+        { "text": "I ask questions to make sure I understand.", "style": "guide" },
+        { "text": "I watch once, then match the pace.", "style": "anchor" },
+        { "text": "I learn by trying it hands-on.", "style": "spark" }
+      ]
+    },
+    {
+      "question": "When things suddenly get busy or chaotic, what tends to happen in your mind?",
+      "answers": [
+        { "text": "I immediately sort out what needs attention first.", "style": "strategist" },
+        { "text": "I stay tuned into how everyone around me is feeling.", "style": "guide" },
+        { "text": "I naturally slow down internally and stay steady.", "style": "anchor" },
+        { "text": "I actually get energized and move faster.", "style": "spark" }
+      ]
+    },
+    {
+      "question": "When someone around you seems unhappy or frustrated, what’s your natural first instinct?",
+      "answers": [
+        { "text": "I think through what might have gone wrong and how to fix it quickly.", "style": "strategist" },
+        { "text": "I focus on how they're feeling and what they emotionally need.", "style": "guide" },
+        { "text": "I stay calm and steady until I know the best way to respond.", "style": "anchor" },
+        { "text": "I try to lighten the mood or shift the energy.", "style": "spark" }
+      ]
+    },
+    {
+      "question": "When you’re learning a new job or skill, what helps you feel confident the quickest?",
+      "answers": [
+        { "text": "Seeing the whole process mapped out.", "style": "strategist" },
+        { "text": "Talking it through or asking questions.", "style": "guide" },
+        { "text": "Watching someone experienced do it first.", "style": "anchor" },
+        { "text": "Jumping in and trying it myself.", "style": "spark" }
+      ]
+    }
+  ]
+}

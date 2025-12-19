@@ -1,0 +1,44 @@
+{
+  "module_id": "orientation",
+  "title": "Orientation: Your First Shift",
+  "scenarios": [
+    {
+      "id": "first_5_minutes",
+      "title": "Your First Five Minutes",
+      "steps": [
+        {
+          "type": "text",
+          "text": "Welcome. Before anything else, take a breath. Confidence starts here."
+        },
+        {
+          "type": "text",
+          "text": "Your goal in the first five minutes is simple: make the table feel acknowledged and taken care of."
+        },
+        {
+          "type": "text",
+          "text": "Approach the table within 30 seconds, smile, and introduce yourself."
+        },
+        {
+          "type": "reflection",
+          "prompt": "Why do you think speed matters so much in the first interaction?"
+        },
+        {
+          "type": "quiz",
+          "question": "What is the main goal of the first five minutes?",
+          "options": [
+            "Take the full order immediately",
+            "Show confidence and set expectations",
+            "Explain the entire menu",
+            "Upsell drinks"
+          ],
+          "correct_answer": 1
+        },
+        {
+          "type": "quiz_result",
+          "correct_text": "Exactly. Confidence and clarity come first.",
+          "incorrect_text": "Not quite. The priority is setting tone and trust, not rushing the order."
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,10 @@
 {
   "module_id": "orientation",
   "title": "Orientation: Your First Shift",
+  "description": "Introduces core expectations, mindset, and first-shift behavior.",
+  "estimated_minutes": 10,
+  "version": "1.0",
+
   "scenarios": [
     {
       "id": "first_5_minutes",
@@ -31,7 +35,7 @@
             "Explain the entire menu",
             "Upsell drinks"
           ],
-          "correct_answer": 1
+          "correct_index": 1
         },
         {
           "type": "quiz_result",

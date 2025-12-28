@@ -7,6 +7,16 @@ Built with FastAPI, this backend currently powers **orientation and first-day tr
 
 ## Current Focus (Active)
 
+### Frontend (Phase 1)
+- Frontend controls scenario progression
+- Backend returns entire scenarios at once
+- No user state or progress is persisted yet
+
+### Module Picker (Phase 1)
+- Frontend fetches available modules from the backend
+- Modules are presented as selectable training options
+- Each module defines a default scenario for entry
+
 ### Scenario-Based Orientation Modules
 - Training content is defined as JSON modules composed of one or more scenarios
 - Each scenario contains a sequence of steps such as:
@@ -21,7 +31,7 @@ Built with FastAPI, this backend currently powers **orientation and first-day tr
 
 ### Primary API Endpoint
 
-`GET /modules/{module_id}/{scenario_id}`
+GET /modules/{module_id}/scenario/{scenario_id}
 
 
 Returns a frontend-ready payload:
@@ -29,7 +39,7 @@ Returns a frontend-ready payload:
 - selected scenario
 - ordered steps
 
-This endpoint represents the **current production path** of the system.
+This endpoint represents the **primary Phase 1 content delivery path**.
 
 ---
 
@@ -58,6 +68,7 @@ These systems are currently **parked**, not removed, and will be reintroduced as
 
 ## Additional API Endpoints (Internal / Future Use)
 
+- `GET /modules` — return module catalog metadata for the Module Picker UI
 - `GET /modules/{id}/raw` — return raw module JSON
 - `GET /modules/{id}/content` — return module metadata
 - `GET /modules/{id}/step/{index}` — return processed lesson steps
@@ -73,7 +84,7 @@ app/
 │ ├── modules/ # Scenario-based modules (active)
 │ ├── lessons/ # Long-form lessons (parked)
 │ ├── quizzes/ # Quiz definitions (parked)
-│ └── scenarios/ # Reusable scenario templates (parked)
+│ ├── scenarios/ # Reserved for reusable scenario templates (parked)
 │
 ├── engines/
 │ ├── module_engine.py

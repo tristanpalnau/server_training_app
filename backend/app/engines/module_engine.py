@@ -1,3 +1,13 @@
+"""
+Module execution engine.
+
+This module provides minimal utilities for loading module content,
+retrieving individual steps, and transforming raw step definitions
+into frontend-ready payloads.
+
+It is intentionally lightweight and stateless. Higher-level lesson
+flow, persistence, and personalization are handled elsewhere.
+"""
 import json
 import os
 from typing import Dict
@@ -5,21 +15,12 @@ from typing import Dict
 
 def load_module(filename: str) -> Dict:
     """
-    Load a lesson module JSON file from /content/modules/.
+    Load a lesson module JSON file from disk for engine-based execution.
 
-    Parameters
-    ----------
-    filename : str
-        The module file name, e.g. "lesson_1.json".
-
-    Returns
-    -------
-    dict
-        Parsed module data containing:
-        - id
-        - title
-        - steps (list of step dictionaries)
+    This function is used by engine-driven flows and expects a full
+    filename (including .json), unlike raw loaders that accept module IDs.
     """
+    # Resolve module path relative to this file to avoid CWD dependence
     base_path = os.path.dirname(os.path.abspath(__file__))
     full_path = os.path.join(base_path, "..", "content", "modules", filename)
 
@@ -31,22 +32,7 @@ def get_step(module: dict, index: int) -> dict:
     """
     Retrieve a specific step from a loaded module.
 
-    Parameters
-    ----------
-    module : dict
-        The module dictionary returned by load_module().
-    index : int
-        The zero-based index of the step to retrieve.
-
-    Returns
-    -------
-    dict
-        The step dictionary for the requested index.
-
-    Raises
-    ------
-    IndexError
-        If the index is outside the range of available steps.
+    This function performs no processing or mutation of the step.
     """
     steps = module["steps"]
 
@@ -58,17 +44,10 @@ def get_step(module: dict, index: int) -> dict:
 
 def process_step(step: dict, **kwargs) -> dict:
     """
-    Route a step dictionary to the correct handler function based on 'type'.
+    Dispatch a raw step dictionary to the appropriate handler based on its type.
 
-    Parameters
-    ----------
-    step : dict
-        A single step from the module's 'steps' list.
-
-    Returns
-    -------
-    dict
-        A standardized, backend-ready step dictionary for the frontend.
+    This function acts as a router between step definitions and handler
+    functions. It does not manage lesson flow or state.
     """
     step_type = step.get("type")
 
@@ -89,7 +68,7 @@ def process_step(step: dict, **kwargs) -> dict:
 
 
 def handle_text(step: dict) -> dict:
-    """Return a simple text step."""
+    """Transform a text step into a frontend-ready payload."""
     return {
         "type": "text",
         "content": step["content"]
@@ -97,7 +76,7 @@ def handle_text(step: dict) -> dict:
 
 
 def handle_reflection(step: dict) -> dict:
-    """Return a reflection prompt step."""
+    """Transform a reflection step into a frontend-ready payload."""
     return {
         "type": "reflection",
         "prompt": step["prompt"]
@@ -106,9 +85,10 @@ def handle_reflection(step: dict) -> dict:
 
 def handle_quiz(step: dict) -> dict:
     """
-    Minimal quiz handler.
-    Returns only the quiz ID.
-    The frontend will request the quiz content from /quiz/<id>/content.
+    Transform a quiz step into a frontend-ready payload.
+
+    Only returns the quiz ID. The frontend is responsible for fetching
+    quiz content from the quiz service.
     """
     return {
         "type": "quiz",
@@ -118,11 +98,12 @@ def handle_quiz(step: dict) -> dict:
 
 def handle_quiz_result(step: dict, primary_style=None, strategist=None, guide=None, anchor=None, spark=None) -> dict:
     """
-    Inserts quiz results into the quiz_result step.
-    primary_style is REQUIRED.
-    Breakdown counts are optional.
-    """
+    Generate a quiz_result step payload using quiz outcome parameters.
 
+    This handler expects quiz results to be passed via query parameters.
+    This is MVP behavior and may be replaced by persisted quiz results
+    in later phases.
+    """
     # If frontend didn't provide a style, show an error (expected MVP behavior).
     if primary_style is None:
         return {
